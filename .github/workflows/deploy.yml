@@ -16,6 +16,6 @@ jobs:
             cd innovartus-app
             git pull origin main
             pkill -f app.py || true
-            setsid nohup python3 app.py > app.log 2>&1 & </dev/null &
+            setsid nohup python3 app.py > app.log 2>&1 & < /dev/null &
             disown
             exit 0

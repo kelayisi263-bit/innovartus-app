@@ -1,3 +1,4 @@
+cat > .github/workflows/deploy.yml << 'EOF'
 name: Deploy to EC2
 on:
   push:
@@ -16,6 +17,7 @@ jobs:
             cd innovartus-app
             git pull origin main
             pkill -f app.py || true
-            setsid nohup python3 app.py > app.log 2>&1 & < /dev/null &
+            nohup setsid python3 app.py < /dev/null > app.log 2>&1 &
             disown
             exit 0
+EOF
